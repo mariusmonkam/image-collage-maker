@@ -25,39 +25,72 @@ npm install image-collage-maker
 Here is an example of how to use ImageCollageMaker:
 
 ```typescript
-import { createCollage, CollageOptions } from "image-collage-maker";
-import fs from "fs";
+### Commit Message
+```
+
+feat: add optional image mask feature with customizable colors
+
+````
+
+#### Example Usage
+
+Place the images to be resized in the `images` folder. Here is an example of how to use the `image-collage-maker` package to create a collage:
+
+```javascript
+const { createCollage, getImagesFromFolder } = require("image-collage-maker");
 
 async function main() {
-  const folderPath = "./images"; // Specify your folder path here
+  const folderPath = "./images";
   const imagePaths = await getImagesFromFolder(folderPath);
-  imagePaths.push("https://example.com/image.jpg"); // Adding an online image example
+  imagePaths.push(
+    "https://images.unsplash.com/photo-1593642532973-d31b6557fa68"
+  );
 
-  const options: CollageOptions = {
-    collageSize: { width: 800, height: 800 },
-    imageSize: { width: 100, height: 100 },
-    imagesPerRow: 5,
-    backgroundColor: { r: 255, g: 255, b: 255, alpha: 1 },
-    padding: 10,
+  const options = {
+    collageSize: { width: 1000, height: 1000 },
+    imagesPerRow: 4,
+    padding: 20,
+    margin: 20,
     outputFormat: "jpeg",
     outputQuality: 80,
-    shape: "circle",
-    randomShapeLevel: 5,
-    randomPositionLevel: 5,
-    outputPath: "output/collage.jpg", // Optional output path
+    shape: "circle", // Default shape if shapesArray is not provided
+    shapesArray: ["circle", "triangle", "hexagon", "rectangle"], // Optional array of shapes
+    userDefinedImageSize: { width: 230, height: 230 },
+    minImageSize: 100,
+    maxImageSize: 300,
+    outputPath: "output/collage.jpg",
+    backgroundColor: "#f0f0f0", // Background color in HEX format
+    imageMaskColors: ["#FF0000", "#00FF00"], // Example mask colors in HEX format
+    useMasks: false, // Set to true to apply masks
   };
 
   try {
-    const collageBuffer = await createCollage(imagePaths, options);
-    const outputPath = options.outputPath || "collage.jpg";
-    fs.writeFileSync(outputPath, collageBuffer);
-    console.log(`Collage created and saved as ${outputPath}`);
+    await createCollage(imagePaths, options);
+    console.log("Enhanced collage created and saved.");
   } catch (error) {
     console.error("Error creating collage:", error);
   }
 }
 
 main();
+````
+
+- **collageSize**: Size of the final collage (width and height).
+- **imagesPerRow**: Number of images per row in the collage.
+- **padding**: Padding between images.
+- **margin**: Margin around the collage.
+- **outputFormat**: Format of the output collage (`jpeg`, `png`, `webp`).
+- **outputQuality**: Quality of the output collage (percentage from 0 to 100).
+- **shape**: Shape of the images if `shapesArray` is not provided.
+- **shapesArray**: Optional array of shapes for images.
+- **userDefinedImageSize**: Size of the individual images.
+- **minImageSize**: Minimum size for the images.
+- **maxImageSize**: Maximum size for the images.
+- **outputPath**: Path to save the output collage.
+- **backgroundColor**: Background color of the collage.
+- **imageMaskColors**: Array of colors for image masks.
+- **useMasks**: Set to `true` to apply image masks.
+
 ```
 
 ## API
@@ -65,22 +98,6 @@ main();
 ### `createCollage(imagePaths: string[], options: CollageOptions): Promise<Buffer>`
 
 Creates a collage from the provided images with the specified options.
-
-#### Parameters
-
-- `imagePaths`: An array of image paths (local paths or URLs).
-- `options`: An object with the following properties:
-  - `collageSize`: { width: number, height: number } - The dimensions of the final collage.
-  - `imageSize`: { width: number, height: number } - The dimensions of each image in the collage.
-  - `imagesPerRow`: number - The number of images per row in the collage.
-  - `backgroundColor`: { r: number, g: number, b: number, alpha: number } - The background color of the collage, specified as RGBA.
-  - `padding`: number - The padding between images in the collage.
-  - `outputFormat`: 'jpeg' | 'png' | 'webp' - The format of the output file.
-  - `outputQuality`: number - The quality of the output image (applicable for lossy formats like JPEG and WEBP).
-  - `shape`: 'square' | 'circle' - The shape of the images.
-  - `randomShapeLevel`: number (optional) - The level of randomness for shape (0-10).
-  - `randomPositionLevel`: number (optional) - The level of randomness for position (0-10).
-  - `outputPath`: string (optional) - The path to save the output collage.
 
 #### Returns
 
@@ -94,7 +111,7 @@ Contributions are welcome! Please open an issue or submit a pull request for any
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-````
+```
 
 ### Publishing to npm
 
@@ -102,6 +119,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 2. Log in to your npm account using the following command:
    ```sh
    npm login
+   ```
+
 ````
 
 3. Publish the package:
@@ -141,3 +160,4 @@ ImageCollageMaker/
 3. **Ensure all dependencies** are listed in `package.json`.
 
 By following these steps, you'll have a complete and customizable image collage maker package, ready for open-source contribution and use.
+````
