@@ -24,11 +24,7 @@ npm install image-collage-maker
 
 Here is an example of how to use ImageCollageMaker:
 
-```typescript
-
-feat: add optional image mask feature with customizable colors
-
-```
+````
 
 #### Example Usage
 
@@ -71,7 +67,7 @@ async function main() {
 }
 
 main();
-```
+````
 
 - **collageSize**: Size of the final collage (width and height).
 - **imagesPerRow**: Number of images per row in the collage.
@@ -91,8 +87,6 @@ main();
 
 ```
 
-## API
-
 ### `createCollage(imagePaths: string[], options: CollageOptions): Promise<Buffer>`
 
 Creates a collage from the provided images with the specified options.
@@ -100,6 +94,29 @@ Creates a collage from the provided images with the specified options.
 #### Returns
 
 - A `Promise` that resolves to a `Buffer` containing the image data of the collage.
+
+
+### Folder Structure
+
+```
+
+ImageCollageMaker/
+│
+├── src/
+│ ├── index.ts
+│ ├── utils.ts
+│ ├── types.ts
+│ └── collage.ts
+├── dist/
+│ └── index.js (generated after compilation)
+├── images/ (example folder for local images)
+├── .gitignore
+├── LICENSE
+├── README.md
+├── package.json
+└── tsconfig.json
+
+```
 
 ## Contributing
 
@@ -110,52 +127,3 @@ Contributions are welcome! Please open an issue or submit a pull request for any
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ```
-
-### Publishing to npm
-
-1. Ensure you have an npm account. If not, create one at [npmjs.com](https://www.npmjs.com/).
-2. Log in to your npm account using the following command:
-   ```sh
-   npm login
-   ```
-
-````
-
-3. Publish the package:
-   ```sh
-   npm publish
-   ```
-
-### Folder Structure
-
-```
-
-ImageCollageMaker/
-│
-├── src/
-│   ├── index.ts
-│   ├── utils.ts
-│   ├── types.ts
-│   └── collage.ts
-├── dist/
-│   └── index.js (generated after compilation)
-├── images/ (example folder for local images)
-├── .gitignore
-├── LICENSE
-├── README.md
-├── package.json
-└── tsconfig.json
-
-```
-
-### Additional Steps
-
-1. **Create the `LICENSE` file** with the MIT License text.
-2. **Compile the TypeScript** code before publishing:
-   ```sh
-   npx tsc
-   ```
-3. **Ensure all dependencies** are listed in `package.json`.
-
-By following these steps, you'll have a complete and customizable image collage maker package, ready for open-source contribution and use.
-````
