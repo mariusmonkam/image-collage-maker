@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Image-collange-maker is a Node.js package that allows you to create customizable image collages from both local and online images. The package uses `sharp` for image processing and provides various customization options, such as specifying the shape of images, adding padding, and randomizing positions.",
   "main": "dist/index.js",
+  "bin": {
+    "image-collage-maker": "./dist/cli.js"
+  },
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "npm run build"
@@ -28,5 +31,11 @@
   "bugs": {
     "url": "https://github.com/mariusmonkam/image-collage-maker/issues"
   },
-  "homepage": "https://github.com/mariusmonkam/image-collage-maker#readme"
+  "homepage": "https://github.com/mariusmonkam/image-collage-maker#readme",
+  "devDependencies": {
+    "@types/node": "^20.14.11",
+    "axios": "^1.7.2",
+    "sharp": "^0.33.4"
+  },
+  "types": "dist/index.d.ts"
 }
