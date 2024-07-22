@@ -25,12 +25,10 @@ npm install image-collage-maker
 Here is an example of how to use ImageCollageMaker:
 
 ```typescript
-### Commit Message
-```
 
 feat: add optional image mask feature with customizable colors
 
-````
+```
 
 #### Example Usage
 
@@ -73,7 +71,7 @@ async function main() {
 }
 
 main();
-````
+```
 
 - **collageSize**: Size of the final collage (width and height).
 - **imagesPerRow**: Number of images per row in the collage.
