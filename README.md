@@ -24,8 +24,6 @@ npm install image-collage-maker
 
 Here is an example of how to use ImageCollageMaker:
 
-````
-
 #### Example Usage
 
 Place the images to be resized in the `images` folder. Here is an example of how to use the `image-collage-maker` package to create a collage:
@@ -67,7 +65,7 @@ async function main() {
 }
 
 main();
-````
+```
 
 - **collageSize**: Size of the final collage (width and height).
 - **imagesPerRow**: Number of images per row in the collage.
@@ -85,8 +83,6 @@ main();
 - **imageMaskColors**: Array of colors for image masks.
 - **useMasks**: Set to `true` to apply image masks.
 
-```
-
 ### `createCollage(imagePaths: string[], options: CollageOptions): Promise<Buffer>`
 
 Creates a collage from the provided images with the specified options.
@@ -95,11 +91,9 @@ Creates a collage from the provided images with the specified options.
 
 - A `Promise` that resolves to a `Buffer` containing the image data of the collage.
 
-
 ### Folder Structure
 
 ```
-
 ImageCollageMaker/
 │
 ├── src/
@@ -115,7 +109,6 @@ ImageCollageMaker/
 ├── README.md
 ├── package.json
 └── tsconfig.json
-
 ```
 
 ## Contributing
@@ -125,5 +118,3 @@ Contributions are welcome! Please open an issue or submit a pull request for any
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-```
