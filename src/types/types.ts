@@ -1,13 +1,25 @@
+// types/types.ts
+
 export interface CollageOptions {
-  collageSize: { width: number; height: number };
-  imageSize: { width: number; height: number };
+  collageSize: {
+    width: number;
+    height: number;
+  };
   imagesPerRow: number;
-  backgroundColor: { r: number; g: number; b: number; alpha: number };
   padding: number;
+  margin?: number; // Optional, defaults to 20
   outputFormat: "jpeg" | "png" | "webp";
-  outputQuality: number; // Used for lossy formats like JPEG
-  shape: "square" | "circle";
-  randomShapeLevel?: number; // Level of randomness for shape (0-10)
-  randomPositionLevel?: number; // Level of randomness for position (0-10)
-  outputPath?: string; // Optional output path
+  outputQuality: number; // Quality percentage (0-100)
+  shape: "circle" | "triangle" | "hexagon" | "rectangle" | "square";
+  shapesArray?: string[]; // Optional array of shapes for images
+  outputPath?: string; // Optional path to save the collage
+  userDefinedImageSize?: {
+    width: number;
+    height: number;
+  };
+  minImageSize?: number; // Optional, minimum size for images
+  maxImageSize?: number; // Optional, maximum size for images
+  backgroundColor?: string; // Background color in HEX, RGB, or RGBA format
+  imageMaskColors?: string[]; // Optional array of colors for image masks in HEX, RGB, or RGBA format
+  useMasks?: boolean; // Optional flag to enable or disable image masks
 }
